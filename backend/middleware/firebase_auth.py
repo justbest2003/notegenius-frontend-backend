@@ -1,4 +1,5 @@
 import os
+import json
 import firebase_admin
 from firebase_admin import credentials, auth
 from fastapi import Depends, HTTPException, status
@@ -15,20 +16,35 @@ def init_firebase():
     if _firebase_app:
         return
 
-    cred_path = settings.FIREBASE_CREDENTIALS_PATH
-    if os.path.exists(cred_path):
-        cred = credentials.Certificate(cred_path)
+    cred = None
+
+    # 1. Try env var (production — Render, Railway, etc.)
+    cred_json = os.getenv("FIREBASE_CREDENTIALS_JSON")
+    if cred_json:
+        try:
+            cred_dict = json.loads(cred_json)
+            cred = credentials.Certificate(cred_dict)
+            print("✅ Firebase Admin SDK initialized from env var")
+        except (json.JSONDecodeError, ValueError) as e:
+            print(f"⚠️  FIREBASE_CREDENTIALS_JSON parse error: {e}")
+
+    # 2. Fall back to local file (dev)
+    if not cred:
+        cred_path = settings.FIREBASE_CREDENTIALS_PATH
+        if os.path.exists(cred_path):
+            cred = credentials.Certificate(cred_path)
+            print("✅ Firebase Admin SDK initialized from credentials file")
+
+    # 3. Initialize app
+    if cred:
         _firebase_app = firebase_admin.initialize_app(cred)
-        print("✅ Firebase Admin SDK initialized with credentials file")
     else:
-        # Try default credentials (for Cloud environments)
         try:
             _firebase_app = firebase_admin.initialize_app()
             print("✅ Firebase Admin SDK initialized with default credentials")
         except Exception:
             print("⚠️  Firebase credentials not found. Auth verification disabled (dev mode).")
-            print(f"   Expected file: {cred_path}")
-            print("   Download from Firebase Console → Project Settings → Service Accounts")
+            print("   Set FIREBASE_CREDENTIALS_JSON env var or provide credentials file.")
 
 
 # HTTP Bearer token scheme
