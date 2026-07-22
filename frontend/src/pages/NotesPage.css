@@ -1,0 +1,133 @@
+.notes-page {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+/* Header */
+.notes-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* Toolbar */
+.notes-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.notes-search {
+  flex: 1;
+  min-width: 220px;
+  position: relative;
+}
+
+.notes-search-icon {
+  position: absolute;
+  left: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  font-size: 1.1rem;
+}
+
+.notes-search-input {
+  padding-left: 2.5rem !important;
+}
+
+.notes-filters {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 0.25rem;
+  border: 1px solid var(--border-glass);
+}
+
+.filter-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  color: var(--text-secondary);
+}
+
+.filter-btn--active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.notes-view-toggle {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.btn-icon--active {
+  color: var(--accent-secondary) !important;
+  background: rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Notes Grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.notes-grid--list {
+  grid-template-columns: 1fr;
+}
+
+.notes-grid--list .note-card {
+  flex-direction: row;
+  align-items: center;
+}
+
+.notes-grid--list .note-card-content {
+  -webkit-line-clamp: 1;
+  flex: 1;
+}
+
+/* Loading */
+.notes-loading {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.note-skeleton {
+  height: 180px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notes-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .notes-filters {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .notes-view-toggle {
+    display: none;
+  }
+}

@@ -1,0 +1,111 @@
+.stats-card {
+  padding: var(--space-lg);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  opacity: 0.06;
+  transition: opacity var(--transition-base);
+}
+
+.stats-card:hover::after {
+  opacity: 0.12;
+}
+
+.stats-card--primary::after {
+  background: var(--accent-primary);
+}
+
+.stats-card--success::after {
+  background: var(--success);
+}
+
+.stats-card--warning::after {
+  background: var(--warning);
+}
+
+.stats-card--info::after {
+  background: var(--info);
+}
+
+.stats-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.stats-card--primary .stats-card-icon {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--accent-secondary);
+}
+
+.stats-card--success .stats-card-icon {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.stats-card--warning .stats-card-icon {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.stats-card--info .stats-card-icon {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+.stats-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stats-card-value {
+  font-family: var(--font-en);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.stats-card-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.stats-card-trend {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.trend-up {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.trend-down {
+  background: var(--error-bg);
+  color: var(--error);
+}

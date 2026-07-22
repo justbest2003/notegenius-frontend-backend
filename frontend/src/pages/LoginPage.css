@@ -1,0 +1,237 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Orbs */
+.login-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.login-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 8s ease-in-out infinite;
+}
+
+.login-bg-orb--1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(99, 102, 241, 0.15);
+  top: -10%;
+  right: -5%;
+  animation-delay: 0s;
+}
+
+.login-bg-orb--2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(139, 92, 246, 0.12);
+  bottom: -10%;
+  left: -5%;
+  animation-delay: 2s;
+}
+
+.login-bg-orb--3 {
+  width: 200px;
+  height: 200px;
+  background: rgba(168, 85, 247, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 4s;
+}
+
+/* Container */
+.login-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(18, 18, 26, 0.8);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(99, 102, 241, 0.08);
+}
+
+/* Logo */
+.login-logo {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.login-logo-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+  animation: glow 3s ease-in-out infinite;
+}
+
+.login-logo-text {
+  font-family: var(--font-en);
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+}
+
+.login-logo-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.login-field {
+  position: relative;
+}
+
+.login-field-icon {
+  position: absolute;
+  left: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  font-size: 1.1rem;
+  display: flex;
+  z-index: 1;
+}
+
+.login-input {
+  padding-left: 2.75rem !important;
+  background: var(--bg-primary) !important;
+}
+
+.login-error {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--error-bg);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--error);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: var(--space-sm);
+}
+
+/* Divider */
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-glass);
+}
+
+.login-divider span {
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+}
+
+/* Google Button */
+.login-google {
+  width: 100%;
+}
+
+/* Toggle */
+.login-toggle {
+  text-align: center;
+  margin-top: var(--space-lg);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.login-toggle-btn {
+  color: var(--accent-secondary);
+  font-weight: 600;
+  margin-left: var(--space-sm);
+  font-size: 0.85rem;
+  transition: color var(--transition-fast);
+}
+
+.login-toggle-btn:hover {
+  color: var(--accent-tertiary);
+}
+
+/* Tech Stack */
+.login-tech {
+  margin-top: var(--space-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.login-tech>span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.login-tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.tech-badge {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border-glass);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-container {
+    padding: var(--space-xl);
+  }
+
+  .login-logo-text {
+    font-size: 1.5rem;
+  }
+}
